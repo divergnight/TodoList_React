@@ -1,0 +1,26 @@
+.multiToDoList-inputgroup {
+	width: 500px !important;
+	margin: 20px auto 0px auto !important;
+}
+
+#multiToDoList-clearall {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	border-radius: 0;
+}
+
+#todo-list {
+	position: relative;
+	display: inline-block;
+}
+
+.delete-button {
+	position: absolute;
+	top: 20px;
+	right: 0px;
+	height: 50.69px;
+	z-index: 1;
+	border-radius: 0 2px 0 0 !important;
+	border: none !important;
+}

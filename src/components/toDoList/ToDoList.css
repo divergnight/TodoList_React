@@ -1,0 +1,43 @@
+#todolist {
+	margin-top: 20px;
+	padding: 0;
+	width: 500px;
+	background-color: #f0f0f0;
+}
+
+h3,
+th,
+td {
+	text-align: center !important;
+}
+
+th {
+	padding: 0 !important;
+}
+
+#ToDoList-erase-all {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	width: 100%;
+}
+
+.card-footer {
+	padding: 0px !important;
+}
+
+table {
+	margin-bottom: 0 !important;
+}
+
+td {
+	position: relative;
+}
+
+.ToDoList-delete-note-button {
+	position: absolute;
+	height: 100%;
+	top: 0;
+	right: 0;
+	border-radius: 0 !important;
+	border: none !important;
+}
