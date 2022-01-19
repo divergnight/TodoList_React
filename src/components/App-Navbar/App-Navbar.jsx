@@ -1,7 +1,15 @@
 import './App-Navbar.css';
-import { Container, Navbar, Nav } from 'react-bootstrap';
+import {
+	Container,
+	Navbar,
+	Nav,
+	Form,
+	FormControl,
+	Button,
+} from 'react-bootstrap';
 
-export default function AppNavbar() {
+export default function AppNavbar(props) {
+	const setSearch = props.setSearch;
 	return (
 		<Navbar bg="light" expand="lg">
 			<Container id="nav-container">
@@ -11,6 +19,17 @@ export default function AppNavbar() {
 					<Nav className="me-auto">
 						<Nav.Link href="#home">Home</Nav.Link>
 					</Nav>
+					<Form className="d-flex">
+						<FormControl
+							type="search"
+							placeholder="Search"
+							className="me-2"
+							aria-label="Search"
+							value={props.search}
+							onChange={e => setSearch(e.target.value)}
+						/>
+						<Button variant="secondary">Search</Button>
+					</Form>
 				</Navbar.Collapse>
 			</Container>
 		</Navbar>

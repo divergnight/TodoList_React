@@ -3,14 +3,17 @@ import './App.css';
 import AppNavbar from './components/App-Navbar/App-Navbar';
 import MultiToDoList from './components/MultiToDoList/MultiToDoList';
 import ToDoList from './components/toDoList/ToDoList';
+import { useState } from 'react';
 
 function App() {
+	const [search, setSearch] = useState('');
+
 	return (
 		<div className="App">
 			<header className="App-header">
-				<AppNavbar />
+				<AppNavbar search={search} setSearch={setSearch} />
 			</header>
-			<MultiToDoList />
+			<MultiToDoList search={search} />
 		</div>
 	);
 }
