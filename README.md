@@ -1,9 +1,3 @@
-# Titre => <h1>
-
-## Titre => <h2>
-
-### ...
-
 # App TodoList
 
 Applicatino de Todolist pour apprendre les bases de **ReactJS**
