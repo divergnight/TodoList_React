@@ -1,0 +1,30 @@
+#todolist {
+	margin-top: 20px;
+	padding: 0;
+	width: 500px;
+	background-color: #f0f0f0;
+}
+
+h3,
+th,
+td {
+	text-align: center !important;
+}
+
+th {
+	padding: 0 !important;
+}
+
+#erase-all {
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	width: 100%;
+}
+
+.card-footer {
+	padding: 0px !important;
+}
+
+table {
+	margin-bottom: 0 !important;
+}
