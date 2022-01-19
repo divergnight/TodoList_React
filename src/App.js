@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
-import ToDoList from './components/toDoListv2/ToDoListv2';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import AppNavbar from './components/App-Navbar/App-Navbar';
+import MultiToDoList from './components/MultiToDoList/MultiToDoList';
+import ToDoList from './components/toDoList/ToDoList';
 
 function App() {
 	return (
@@ -10,7 +10,7 @@ function App() {
 			<header className="App-header">
 				<AppNavbar />
 			</header>
-			<ToDoList />
+			<MultiToDoList />
 		</div>
 	);
 }
