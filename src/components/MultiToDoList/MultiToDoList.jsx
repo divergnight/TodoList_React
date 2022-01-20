@@ -1,7 +1,7 @@
 import './MultiToDoList.css';
 import ToDoList from '../toDoList/ToDoList';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
 	Button,
 	InputGroup,
@@ -10,6 +10,7 @@ import {
 	Row,
 	Col,
 } from 'react-bootstrap';
+import { v4 as uuid } from 'uuid';
 
 export default function MultiToDoList(props) {
 	const [name, setName] = useState('');
@@ -20,7 +21,8 @@ export default function MultiToDoList(props) {
 			return null;
 		}
 		let tmp = [...list];
-		tmp.push(name);
+		let obj = { id: uuid(), title: name, notes: [] };
+		tmp.push(obj);
 		setList(tmp);
 		setName('');
 	}
@@ -30,6 +32,15 @@ export default function MultiToDoList(props) {
 		tmp.splice(i, 1);
 		setList(tmp);
 	}
+
+	useEffect(() => {
+		let data = localStorage.getItem('todo-list');
+		setList(JSON.parse(data));
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem('todo-list', JSON.stringify(list));
+	}, [list]);
 
 	return (
 		<div>
@@ -54,15 +65,15 @@ export default function MultiToDoList(props) {
 			</form>
 			<Container>
 				<Row>
-					{list.map((title, index) => {
+					{list.map((infos, index) => {
 						return (
-							<Col key={index}>
+							<Col key={infos.id}>
 								<span id="todo-list">
 									<Button
 										className="delete-button"
 										variant="outline-secondary"
 										onClick={() => {
-											deleteListItem(index);
+											deleteListItem(infos.id);
 										}}
 									>
 										<svg
@@ -70,22 +81,24 @@ export default function MultiToDoList(props) {
 											width="16"
 											height="16"
 											fill="currentColor"
-											class="bi bi-x-lg"
+											className="bi bi-x-lg"
 											viewBox="0 0 16 16"
 										>
 											<path
-												fill-rule="evenodd"
+												fillRule="evenodd"
 												d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"
 											/>
 											<path
-												fill-rule="evenodd"
+												fillRule="evenodd"
 												d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"
 											/>
 										</svg>
 									</Button>
 									<ToDoList
-										title={title}
 										search={props.search}
+										infos={infos}
+										list={list}
+										setList={setList}
 									/>
 								</span>
 							</Col>

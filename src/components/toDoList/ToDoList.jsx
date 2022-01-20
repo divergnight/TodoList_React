@@ -15,6 +15,11 @@ export default function ToDoList(props) {
 	const [notes, setNotes] = useState([]);
 	const [notesFilter, setNotesFilter] = useState([]);
 	const search = props.search;
+	const infos = props.infos;
+	const id = infos.id;
+	const title = infos.title;
+	const list = props.list;
+	const setList = props.setList;
 
 	useEffect(() => {
 		setNotesFilter(notes);
@@ -44,17 +49,27 @@ export default function ToDoList(props) {
 		setNotes(tmp);
 	}
 
+	useEffect(() => {
+		let tmpList = [...list];
+		for (let i = 0; i < list.length; i++) {
+			if (list[i].id === id) {
+				let tmpObj = { ...list[i] };
+				tmpObj.notes = [...notes];
+				tmpList[i] = tmpObj;
+				setList(tmpList);
+			}
+		}
+	}, [notes]);
+
+	useEffect(() => {
+		setNotes(infos.notes);
+	}, []);
+
 	return (
 		<Container id="todolist">
 			<Card>
 				<Card.Header>
-					<Titre
-						text={
-							props.title === undefined
-								? 'Todo List'
-								: props.title
-						}
-					/>
+					<Titre text={title === undefined ? 'Todo List' : title} />
 				</Card.Header>
 				<Card.Body>
 					<form
@@ -103,15 +118,15 @@ export default function ToDoList(props) {
 														width="16"
 														height="16"
 														fill="currentColor"
-														class="bi bi-x-lg"
+														className="bi bi-x-lg"
 														viewBox="0 0 16 16"
 													>
 														<path
-															fill-rule="evenodd"
+															fillRule="evenodd"
 															d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"
 														/>
 														<path
-															fill-rule="evenodd"
+															fillRule="evenodd"
 															d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"
 														/>
 													</svg>
