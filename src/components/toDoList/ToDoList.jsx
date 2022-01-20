@@ -69,7 +69,11 @@ export default function ToDoList(props) {
 		<Container id="todolist">
 			<Card>
 				<Card.Header>
-					<Titre text={title === undefined ? 'Todo List' : title} />
+					<Titre
+						text={title === undefined ? 'Todo List' : title}
+						nb={notesFilter.length}
+						nbMax={notes.length}
+					/>
 				</Card.Header>
 				<Card.Body>
 					<form
